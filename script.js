@@ -8,10 +8,15 @@ async function getPlanets() {
     }
 
     const { results } = await response.json();
-    console.log(results);
+    return results;
   } catch (error) {
     console.log(error.message);
   }
 }
 
-getPlanets();
+async function printPlanets() {
+  const planets = await getPlanets();
+  console.log(planets);
+}
+
+printPlanets();
