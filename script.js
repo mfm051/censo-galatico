@@ -58,3 +58,33 @@ planetButtons.forEach((planetButton) => {
     newPlanetInfo(e.currentTarget.id)
   );
 });
+
+async function getPlanetFromInput() {
+  const searchArea = document.getElementById("search-area");
+
+  const baseUrl = "https://swapi.dev/api/planets/?search=";
+  const searchWord = searchArea.value;
+
+  try {
+    const response = await fetch(baseUrl + searchWord);
+
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
+
+    const { results } = await response.json();
+    return results;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function printSearchedPlanet() {
+  planetArea.replaceChildren();
+  const searchResults = await getPlanetFromInput();
+  const planet = searchResults[0];
+  printPlanetInfo(planet);
+}
+
+const searchButton = document.getElementById("search-button");
+searchButton.addEventListener("click", printSearchedPlanet);
