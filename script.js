@@ -22,12 +22,16 @@ async function printPlanets() {
   console.log(planets);
 }
 
-async function printPlanetInfo(planetName) {
+async function getPlanetFromName(planetName) {
   const planets = await getPlanets();
   const planet = planets.find((planet) => planet.name === planetName);
 
+  return planet;
+}
+
+async function printPlanetInfo(planet) {
   const title = document.createElement("h2");
-  title.innerText = `Informações sobre ${planetName}`;
+  title.innerText = `Informações sobre ${planet.name}`;
 
   const climate = document.createElement("li");
   climate.innerText = `Clima: ${planet.climate}`;
@@ -42,8 +46,9 @@ async function printPlanetInfo(planetName) {
 }
 
 async function newPlanetInfo(planetName) {
+  const planet = await getPlanetFromName(planetName);
   planetArea.replaceChildren();
-  await printPlanetInfo(planetName);
+  await printPlanetInfo(planet);
 }
 
 printPlanets();
