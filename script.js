@@ -59,3 +59,21 @@ async function printPlanetInfo(planet) {
 
   planetArea.append(title, climate, population, terrain);
 }
+
+async function getResident(residentURL) {
+  const response = await fetch(residentURL);
+  const resident = await response.json();
+  return resident;
+}
+
+async function getPlanetResidents(planet) {
+  const residentsURLs = planet.residents.map((url) => url + "?format=json");
+  const residents = await Promise.all(
+    residentsURLs.map(async (url) => {
+      const resident = await getResident(url);
+      return resident;
+    })
+  );
+
+  return residents;
+}
