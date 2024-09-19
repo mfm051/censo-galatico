@@ -1,20 +1,24 @@
 const planetArea = document.getElementById("planet-info");
+const residentsTable = document.getElementById("residents-info");
+const residentsData = document.getElementById("residents-data");
 
 const planetButtons = document.querySelectorAll(".planet-button");
 planetButtons.forEach((planetButton) => {
   planetButton.addEventListener("click", async (e) => {
-    planetArea.replaceChildren();
+    clearScreen();
     const planet = await getPlanetFromName(e.currentTarget.id);
     printPlanetInfo(planet);
+    showResidents(planet);
   });
 });
 
 const searchArea = document.getElementById("search-area");
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", async () => {
-  planetArea.replaceChildren();
+  clearScreen();
   const planet = await getPlanetFromSearch(searchArea.value);
   printPlanetInfo(planet);
+  showResidents(planet);
 });
 
 async function getPlanets() {
@@ -76,4 +80,31 @@ async function getPlanetResidents(planet) {
   );
 
   return residents;
+}
+
+async function showResidents(planet) {
+  const residents = await getPlanetResidents(planet);
+  if (residents.length === 0) {
+    return;
+  }
+
+  residentsTable.style.display = "block";
+
+  residents.forEach((resident) => {
+    const residentRow = document.createElement("tr");
+    const residentNameCell = document.createElement("td");
+    const residentBirthCell = document.createElement("td");
+
+    residentNameCell.innerText = resident.name;
+    residentBirthCell.innerText = resident.birth_year;
+
+    residentRow.append(residentNameCell, residentBirthCell);
+    residentsData.appendChild(residentRow);
+  });
+}
+
+function clearScreen() {
+  planetArea.replaceChildren();
+  residentsTable.style.display = "none";
+  residentsData.replaceChildren();
 }
