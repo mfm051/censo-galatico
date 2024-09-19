@@ -5,21 +5,25 @@ const residentsData = document.getElementById("residents-data");
 const planetButtons = document.querySelectorAll(".planet-button");
 planetButtons.forEach((planetButton) => {
   planetButton.addEventListener("click", async (e) => {
-    clearScreen();
     const planet = await getPlanetFromName(e.currentTarget.id);
-    printPlanetInfo(planet);
-    showResidents(planet);
+    updatePageInfo(planet);
   });
 });
 
 const searchArea = document.getElementById("search-area");
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", async () => {
-  clearScreen();
   const planet = await getPlanetFromSearch(searchArea.value);
+  updatePageInfo(planet);
+});
+
+function updatePageInfo(planet) {
+  planetArea.replaceChildren();
+  residentsData.replaceChildren();
+  residentsTable.style.display = "none";
   printPlanetInfo(planet);
   showResidents(planet);
-});
+}
 
 async function getPlanets() {
   const url = "https://swapi.dev/api/planets?format=json";
@@ -28,11 +32,6 @@ async function getPlanets() {
 
   return results;
 }
-
-(async () => {
-  const planets = await getPlanets();
-  console.log(planets);
-})();
 
 async function getPlanetFromName(planetName) {
   const planets = await getPlanets();
@@ -103,8 +102,8 @@ async function showResidents(planet) {
   });
 }
 
-function clearScreen() {
-  planetArea.replaceChildren();
-  residentsTable.style.display = "none";
-  residentsData.replaceChildren();
-}
+// Log all planets on page load
+(async () => {
+  const planets = await getPlanets();
+  console.log(planets);
+})();
