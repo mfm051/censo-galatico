@@ -5,7 +5,7 @@ const residentsData = document.getElementById("residents-data");
 const planetButtons = document.querySelectorAll(".planet-button");
 planetButtons.forEach((planetButton) => {
   planetButton.addEventListener("click", async (e) => {
-    const planet = await getPlanetFromName(e.currentTarget.id);
+    const planet = await getSinglePlanet(e.currentTarget.id);
     updatePageInfo(planet);
   });
 });
@@ -13,7 +13,7 @@ planetButtons.forEach((planetButton) => {
 const searchArea = document.getElementById("search-area");
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", async () => {
-  const planet = await getPlanetFromSearch(searchArea.value);
+  const planet = await getSinglePlanet(searchArea.value);
   updatePageInfo(planet);
 });
 
@@ -33,18 +33,13 @@ async function getPlanets() {
   return results;
 }
 
-async function getPlanetFromName(planetName) {
-  const planets = await getPlanets();
-  const planet = planets.find((planet) => planet.name === planetName);
+async function getSinglePlanet(planetName) {
+  const url = `https://swapi.dev/api/planets?format=json&search=${planetName}`;
+  const response = await fetch(url);
+  const { results } = await response.json();
+  const planet = results[0];
 
   return planet;
-}
-
-async function getPlanetFromSearch(searchWord) {
-  const baseUrl = "https://swapi.dev/api/planets/?search=";
-  const response = await fetch(baseUrl + searchWord);
-  const { results } = await response.json();
-  return results[0];
 }
 
 async function printPlanetInfo(planet) {
