@@ -61,7 +61,20 @@ async function printPlanetInfo(planet) {
 async function getResident(residentURL) {
   const response = await fetch(residentURL);
   const resident = await response.json();
+
   return resident;
+}
+
+function printResidentInfo(resident) {
+  const residentRow = document.createElement("tr");
+  const residentNameCell = document.createElement("td");
+  const residentBirthCell = document.createElement("td");
+
+  residentNameCell.innerText = resident.name;
+  residentBirthCell.innerText = resident.birth_year;
+
+  residentRow.append(residentNameCell, residentBirthCell);
+  residentsData.appendChild(residentRow);
 }
 
 async function showResidents(planet) {
@@ -75,16 +88,7 @@ async function showResidents(planet) {
 
   residentsURLs.forEach(async (url) => {
     const resident = await getResident(url);
-
-    const residentRow = document.createElement("tr");
-    const residentNameCell = document.createElement("td");
-    const residentBirthCell = document.createElement("td");
-
-    residentNameCell.innerText = resident.name;
-    residentBirthCell.innerText = resident.birth_year;
-
-    residentRow.append(residentNameCell, residentBirthCell);
-    residentsData.appendChild(residentRow);
+    printResidentInfo(resident);
   });
 }
 
