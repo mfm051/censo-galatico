@@ -64,27 +64,18 @@ async function getResident(residentURL) {
   return resident;
 }
 
-async function getPlanetResidents(planet) {
-  const residentsURLs = planet.residents.map((url) => url + "?format=json");
-  const residents = await Promise.all(
-    residentsURLs.map(async (url) => {
-      const resident = await getResident(url);
-      return resident;
-    })
-  );
-
-  return residents;
-}
-
 async function showResidents(planet) {
-  const residents = await getPlanetResidents(planet);
-  if (residents.length === 0) {
+  const residentsURLs = planet.residents.map((url) => url + "?format=json");
+
+  if (residentsURLs.length === 0) {
     return;
   }
 
   residentsTable.style.display = "block";
 
-  residents.forEach((resident) => {
+  residentsURLs.forEach(async (url) => {
+    const resident = await getResident(url);
+
     const residentRow = document.createElement("tr");
     const residentNameCell = document.createElement("td");
     const residentBirthCell = document.createElement("td");
