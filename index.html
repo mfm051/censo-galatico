@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Censo galático</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div>
@@ -21,20 +22,21 @@
       <button class="planet-button" id="Naboo">Naboo</button>
       <button class="planet-button" id="Coruscant">Coruscant</button>
       <button class="planet-button" id="Kamino">Kamino</button>
+
+      <ul id="planet-info"></ul>
+      <table id="residents-info" style="display: none">
+        <caption>
+          Residentes famosos do planeta
+        </caption>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Data de nascimento</th>
+          </tr>
+        </thead>
+        <tbody id="residents-data"></tbody>
+      </table>
     </section>
-    <ul id="planet-info"></ul>
-    <table id="residents-info" style="display: none">
-      <caption>
-        Residentes famosos do planeta
-      </caption>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Data de nascimento</th>
-        </tr>
-      </thead>
-      <tbody id="residents-data"></tbody>
-    </table>
     <script src="script.js"></script>
   </body>
 </html>
