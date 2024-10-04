@@ -1,15 +1,7 @@
 @font-face {
-  font-family: "jediregular";
-  src: url("assets/starjedi-webfont.woff2") format("woff2"),
-    url("assets/starjedi-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "jedispecial";
-  src: url("assets/stjedise-webfont.woff2") format("woff2"),
-    url("assets/stjedise-webfont.woff") format("woff");
+  font-family: "soloistitalic";
+  src: url("assets/soloistitalic-p1kr-webfont.woff2") format("woff2"),
+    url("assets/soloistitalic-p1kr-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -50,7 +42,7 @@ body {
 .display-area {
   grid-area: info;
   color: yellow;
-  font-family: "jedispecial", sans-serif;
+  font-family: "soloistitalic", sans-serif;
   overflow: hidden;
   perspective: 500px;
 }
