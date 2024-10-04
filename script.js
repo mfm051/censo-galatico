@@ -44,7 +44,7 @@ async function getSinglePlanet(planetName) {
 
 async function printPlanetInfo(planet) {
   const title = document.createElement("h2");
-  title.innerText = `Informações sobre ${planet.name}`;
+  title.innerText = `informações sobre ${planet.name}`;
 
   const climate = document.createElement("li");
   climate.innerText = `Clima: ${planet.climate}`;

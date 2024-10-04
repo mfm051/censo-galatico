@@ -1,6 +1,23 @@
+@font-face {
+  font-family: "jediregular";
+  src: url("assets/starjedi-webfont.woff2") format("woff2"),
+    url("assets/starjedi-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "jedispecial";
+  src: url("assets/stjedise-webfont.woff2") format("woff2"),
+    url("assets/stjedise-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   display: flex;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   gap: 25px;
@@ -33,6 +50,9 @@ body {
 
 .display-area {
   grid-area: info;
+  color: yellow;
+  overflow: hidden;
+  font-family: "jediregular", sans-serif;
 }
 
 .planet-button {
