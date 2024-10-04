@@ -8,11 +8,70 @@ body {
 }
 
 #planets {
-  height: 100%;
   display: grid;
-  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+  width: 700px;
+  height: 100vh;
+  grid-template-areas:
+    ". p1 p2 ."
+    "p3 info info p4"
+    "p5 info info p6"
+    "p7 info info p8"
+    ". p9 p10 .";
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .display-area {
-  grid-area: 2 / 2 / 3 / 4;
+  grid-area: info;
+}
+
+.planet-button {
+  justify-self: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+#Tatooine {
+  grid-area: p1;
+}
+
+#Alderaan {
+  grid-area: p2;
+}
+
+#Yavin {
+  grid-area: p3;
+  justify-self: end;
+}
+
+#Hoth {
+  grid-area: p4;
+  justify-self: start;
+}
+
+#Dagobah {
+  grid-area: p5;
+}
+
+#Bespin {
+  grid-area: p6;
+}
+
+#Endor {
+  grid-area: p7;
+  justify-self: end;
+}
+
+#Naboo {
+  grid-area: p8;
+  justify-self: start;
+}
+
+#Coruscant {
+  grid-area: p9;
+}
+
+#Kamino {
+  grid-area: p10;
 }
