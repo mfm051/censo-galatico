@@ -22,16 +22,15 @@ body {
   align-items: center;
   gap: 25px;
   padding: 15px;
-  background: url("assets/stars.png") center/40px,
-    linear-gradient(
-      45deg,
-      rgba(33, 38, 64, 1) 0%,
-      rgba(0, 0, 0, 1) 19%,
-      rgba(0, 0, 0, 1) 80%,
-      rgba(121, 61, 27, 1) 91%,
-      rgba(179, 64, 55, 1) 95%,
-      rgba(134, 129, 35, 1) 100%
-    );
+  background: linear-gradient(
+    45deg,
+    rgba(33, 38, 64, 1) 0%,
+    rgba(0, 0, 0, 1) 19%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(121, 61, 27, 1) 91%,
+    rgba(179, 64, 55, 1) 95%,
+    rgba(134, 129, 35, 1) 100%
+  );
 }
 
 #planets {
@@ -51,8 +50,28 @@ body {
 .display-area {
   grid-area: info;
   color: yellow;
+  font-family: "jedispecial", sans-serif;
   overflow: hidden;
-  font-family: "jediregular", sans-serif;
+  perspective: 500px;
+}
+
+.moving-text {
+  position: relative;
+}
+
+.moving-text:hover {
+  animation: 5s ease-in 0s alternate crawl;
+}
+
+@keyframes crawl {
+  0% {
+    top: 0;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -800px;
+    transform: rotateX(25deg) translateZ(-400px);
+  }
 }
 
 .planet-button {
