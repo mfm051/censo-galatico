@@ -5,6 +5,16 @@ body {
   align-items: center;
   gap: 25px;
   padding: 15px;
+  background: url("assets/stars.png") center/40px,
+    linear-gradient(
+      45deg,
+      rgba(33, 38, 64, 1) 0%,
+      rgba(0, 0, 0, 1) 19%,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(121, 61, 27, 1) 91%,
+      rgba(179, 64, 55, 1) 95%,
+      rgba(134, 129, 35, 1) 100%
+    );
 }
 
 #planets {
