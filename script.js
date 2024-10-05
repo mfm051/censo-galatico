@@ -10,10 +10,10 @@ planetButtons.forEach((planetButton) => {
   });
 });
 
-const searchArea = document.getElementById("search-area");
+const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", async () => {
-  const planet = await getSinglePlanet(searchArea.value);
+  const planet = await getSinglePlanet(searchInput.value);
   updatePageInfo(planet);
 });
 
