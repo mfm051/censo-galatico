@@ -144,9 +144,19 @@ body {
 #search-button {
   flex: 1;
   margin: 0;
-  background-color: rgb(59, 58, 58);
-  color: white;
+  background: linear-gradient(rgb(46, 44, 44), rgb(182, 181, 181));
+  color: rgb(187, 182, 182);
   border: none;
+  border-radius: 0 5px 5px 0;
+}
+
+#search-button:hover {
+  color: rgb(15, 48, 231);
+}
+
+#search-button:active {
+  box-shadow: inset 1px 1px 3px rgb(121, 120, 120),
+    inset -1px -1px 3px rgb(121, 120, 120);
 }
 
 #Tatooine {
