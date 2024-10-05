@@ -61,7 +61,7 @@ body {
 .moving-text {
   position: relative;
   transform: rotateX(20deg) translateZ(0);
-  animation: 7s ease-in 1s normal infinite crawl;
+  animation: 7s ease-out 0s normal infinite crawl;
 }
 
 .moving-text:hover {
@@ -70,7 +70,7 @@ body {
 
 @keyframes crawl {
   0% {
-    top: 0;
+    top: 800px;
     transform: rotateX(20deg) translateZ(0);
   }
   100% {
@@ -106,6 +106,10 @@ body {
 
 .planet-button:active {
   transform: scale(0.95);
+}
+
+.planet-button:hover {
+  border: rgb(153, 150, 150) solid 1px;
 }
 
 @keyframes rotate {
