@@ -54,16 +54,18 @@ body {
   top: -25px;
   margin-bottom: -25px;
   width: 100%;
-  height: 25px;
+  height: 30px;
   background-image: linear-gradient(0deg, transparent, black 75%);
 }
 
 .moving-text {
   position: relative;
+  transform: rotateX(20deg) translateZ(0);
+  animation: 7s ease-in 1s normal infinite crawl;
 }
 
 .moving-text:hover {
-  animation: 5s ease-in 0s alternate crawl;
+  animation-play-state: paused;
 }
 
 @keyframes crawl {
@@ -94,8 +96,16 @@ body {
   transform: rotateZ(30deg);
 }
 
-.planet-button .moving-title:hover {
-  animation: 2s linear alternate infinite rotate;
+.planet-button .moving-title {
+  animation: 5s ease-in alternate infinite rotate;
+}
+
+.moving-title:hover {
+  animation-play-state: paused;
+}
+
+.planet-button:active {
+  transform: scale(0.95);
 }
 
 @keyframes rotate {
