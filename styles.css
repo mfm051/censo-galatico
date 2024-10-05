@@ -8,12 +8,9 @@
 
 body {
   display: flex;
-  width: 100%;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  padding: 15px;
   background: linear-gradient(
     45deg,
     rgba(33, 38, 64, 1) 0%,
@@ -28,14 +25,14 @@ body {
 #planets {
   display: grid;
   width: 700px;
-  height: 100vh;
+  height: 700px;
   grid-template-areas:
     ". p1 p2 ."
     "p3 info info p4"
     "p5 info info p6"
     "p7 info info p8"
     ". p9 p10 .";
-  grid-template-rows: max-content repeat(3, 1fr) max-content;
+  grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -120,6 +117,38 @@ body {
   }
 }
 
+.search-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 8px;
+}
+
+#search-input {
+  background-color: rgb(62, 173, 236);
+  flex: 5;
+  margin: 0;
+  border: none;
+  box-shadow: -3px 3px 5px rgb(35, 137, 233), -3px -3px 5px rgb(35, 137, 233),
+    3px 3px 5px rgb(35, 137, 233), 3px -3px 5px rgb(35, 137, 233);
+  border-radius: 8px 0 0 8px;
+}
+
+#search-input:hover {
+  background-color: rgb(15, 48, 231);
+  box-shadow: -3px 3px 5px rgb(3, 23, 138), -3px -3px 5px rgb(3, 23, 138),
+    3px 3px 5px rgb(3, 23, 138), 3px -3px 5px rgb(3, 23, 138);
+}
+
+#search-button {
+  flex: 1;
+  margin: 0;
+  background-color: rgb(59, 58, 58);
+  color: white;
+  border: none;
+}
+
 #Tatooine {
   grid-area: p1;
   background: radial-gradient(
@@ -156,6 +185,7 @@ body {
 
 #Dagobah {
   grid-area: p5;
+  justify-self: start;
   background: radial-gradient(
     circle at center,
     rgb(121, 120, 120) 0,
@@ -165,6 +195,7 @@ body {
 
 #Bespin {
   grid-area: p6;
+  justify-self: end;
   background: radial-gradient(
     circle at center,
     rgb(228, 123, 37) 0,
