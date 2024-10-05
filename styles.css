@@ -86,8 +86,28 @@ body {
   border: none;
 }
 
-.planet-button:active {
-  transform: scale(0.99);
+.planet-button .moving-title {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateZ(30deg);
+}
+
+.planet-button .moving-title:hover {
+  animation: 2s linear alternate infinite rotate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translateX(0) translateY(0) rotateZ(30deg);
+  }
+  50% {
+    transform: translateX(-20px) translateY(-20px) rotateZ(30deg);
+  }
+  100% {
+    transform: translateX(20px) translateY(20px) rotateZ(30deg);
+  }
 }
 
 #Tatooine {
